@@ -1,7 +1,7 @@
 "use client";
 
 import { on } from "events";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [address, setAddress] = useState<any>();
@@ -13,7 +13,10 @@ export default function Home() {
       ).then((res) => res.json())
     );
   };
-  fetchAddress();
+
+  useEffect(() => {
+    fetchAddress();
+  }, []);
   console.log(address?.results?.address1);
   const onClickAddressSearch = async () => {
     // const inputText = document.getElementById("textInput") as HTMLInputElement;
